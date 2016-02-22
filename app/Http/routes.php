@@ -10,22 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/**
+ * @type \Illuminate\Routing\Router $router
+ */
 
-Route::get('/', function () {
+use Psr\Log\LoggerInterface;
+
+$router->get('/', function () {
     return view('welcome');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
-Route::group(['middleware' => ['web']], function () {
-    //
+$router->group(['prefix' => 'api', 'middleware' => ['api']], function () use ($router) {
+    $router->get('/log_sample', function (LoggerInterface $logger) {
+        $logger->info('hoge');
+    });
 });

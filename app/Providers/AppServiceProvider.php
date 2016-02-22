@@ -13,6 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->environment() === 'heroku') {
+            app('log')->useFiles('php://stdout');
+        }
         //
     }
 
