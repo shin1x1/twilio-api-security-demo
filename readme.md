@@ -1,5 +1,7 @@
 # Demo application for Twilio-ug Osaka on February 27, 2016
 
+[![Build Status](https://travis-ci.org/shin1x1/twilio-api-security-demo.svg?branch=master)](https://travis-ci.org/shin1x1/twilio-api-security-demo)
+
 ## Heroku setup
 
 ```
