@@ -18,8 +18,10 @@ class TwilioCallingTest extends TestCase
 </Response>
 EOT;
 
-        $this->post('/api/twilio/calling', $inputs)
-            ->see($expected);
+        $this->post('/api/twilio/calling', $inputs);
+        $this->assertResponseOk();
+
+        $this->assertSame($expected, $this->response->getContent());
     }
 
     /**
@@ -51,7 +53,9 @@ EOT;
 </Response>
 EOT;
 
-        $this->post('/api/twilio/calling', $inputs)
-            ->see($expected);
+        $this->post('/api/twilio/calling', $inputs);
+        $this->assertResponseOk();
+
+        $this->assertSame($expected, $this->response->getContent());
     }
 }
