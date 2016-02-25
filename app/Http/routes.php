@@ -27,4 +27,8 @@ $router->group(['prefix' => 'api', 'middleware' => ['api']], function () use ($r
     });
 
     $router->post('/twilio/calling', TwilioCallingController::class . '@post');
+
+    $router->group(['middleware' => 'auth.basic.once'], function () use ($router) {
+        $router->post('/secure/twilio/calling', TwilioCallingController::class . '@post');
+    });
 });
