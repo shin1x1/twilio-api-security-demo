@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Domain\Repository\UserRepository;
+use App\Infrastructure\Repository\UserRepositoryOnArray;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(UserRepository::class, UserRepositoryOnArray::class);
     }
 }
