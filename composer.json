@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
+        "ext-sqlite3": "*",
+        "ext-pdo_sqlite": "*",
         "laravel/framework": "5.2.*"
     },
     "require-dev": {
