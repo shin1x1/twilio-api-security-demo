@@ -14,6 +14,7 @@
  * @type \Illuminate\Routing\Router $router
  */
 
+use App\Http\Controllers\TwilioCallingController;
 use Psr\Log\LoggerInterface;
 
 $router->get('/', function () {
@@ -24,4 +25,6 @@ $router->group(['prefix' => 'api', 'middleware' => ['api']], function () use ($r
     $router->get('/log_sample', function (LoggerInterface $logger) {
         $logger->info('hoge');
     });
+
+    $router->post('/twilio/calling', TwilioCallingController::class . '@post');
 });
