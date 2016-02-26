@@ -33,6 +33,6 @@ $router->group(['prefix' => 'api', 'middleware' => ['api']], function () use ($r
     });
 
     $router->group(['middleware' => 'twilio.signature.validation'], function () use ($router) {
-        $router->post('/signature/twilio/calling', TwilioCallingController::class . '@post');
+        $router->post('/twilio/calling-with-signature', TwilioCallingController::class . '@post');
     });
 });

@@ -26,8 +26,8 @@ class TwilioSignatureValidationTest extends TestCase
             'From' => '+819012345678',
         ];
 
-        $this->post('/api/signature/twilio/calling', $inputs, [
-            'X-Twilio-Signature' => 'ynNqTQR2aI14J2zAEUz3pLZpvsw=',
+        $this->post('/api/twilio/calling-with-signature', $inputs, [
+            'X-Twilio-Signature' => '+sndfa0paQ+m2P0PZ4U/2lnLkHw=',
         ]);
         $this->assertResponseStatus(200);
     }
@@ -41,8 +41,8 @@ class TwilioSignatureValidationTest extends TestCase
             'From' => '+819012345678',
         ];
 
-        $this->post('/api/signature/twilio/calling', $inputs, [
-            'X-Twilio-Signature' => 'YnNqTQR2aI14J2zAEUz3pLZpvsw=', // invalid
+        $this->post('/api/twilio/calling-with-signature', $inputs, [
+            'X-Twilio-Signature' => '+Sndfa0paQ+m2P0PZ4U/2lnLkHw=', // invalid
         ]);
         $this->assertResponseStatus(400);
     }

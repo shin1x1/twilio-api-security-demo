@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Psr\Log\LoggerInterface;
 use Services_Twilio_RequestValidator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class TwilioSignatureValidation
@@ -37,11 +38,15 @@ class TwilioSignatureValidation
     public function handle($request, Closure $next)
     {
         $signature = $request->header('X-Twilio-Signature');
-        $url = url()->current();
+
+        Request::setTrustedProxies([$request->getClientIp()]);
+        $url = $request->getUri();
+
         $postParameters = $request->input();
 
         if (!$this->validator->validate($signature, $url, $postParameters)) {
             $this->logger->debug('signature:' . $signature);
+            $this->logger->debug('computedSignature:' . $this->validator->computeSignature($url, $postParameters));
             $this->logger->debug('url:' . $url);
             $this->logger->debug('post' . print_r($request->all(), true));
             throw new BadRequestHttpException('X-Twilio-Signature validation was fault');
