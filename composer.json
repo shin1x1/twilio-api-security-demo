@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "ext-sqlite3": "*",
         "ext-pdo_sqlite": "*",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "twilio/sdk": "~4.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

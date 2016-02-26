@@ -21,7 +21,7 @@ class UserRepositoryOnArray implements UserRepository
             );
         }
 
-        if ($telNo == env('TWILIO_USER_TELNO1', '+818012345678')) {
+        if ($telNo == env('TWILIO_USER_TELNO2', '+818012345678')) {
             return new User(
                 $telNo,
                 '鈴木',
