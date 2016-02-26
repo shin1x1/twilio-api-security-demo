@@ -49,7 +49,7 @@ class TwilioSignatureValidation
             $this->logger->debug('computedSignature:' . $this->validator->computeSignature($url, $postParameters));
             $this->logger->debug('url:' . $url);
             $this->logger->debug('post' . print_r($request->all(), true));
-            throw new BadRequestHttpException('X-Twilio-Signature validation was fault');
+            throw new BadRequestHttpException('X-Twilio-Signature validation error');
         }
 
         return $next($request);
