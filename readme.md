@@ -15,4 +15,6 @@ heroku config:add DB_CONNECTION=sqlite
 heroku config:add APP_ENV=heroku
 heroku config:add APP_DEBUG=false
 heroku config:add APP_KEY=xxxxxxxxxxxxxxxxxxxxx
+
+heroku config:add TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxx
 ```
